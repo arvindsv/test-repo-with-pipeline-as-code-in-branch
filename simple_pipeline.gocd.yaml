@@ -1,38 +1,13 @@
-{
-  "format_version" : 1,
-  "name": "simple_pipeline",
-  "group" : "Build",
-  "materials": [
-    {
-      "url": "https://github.com/arvindsv/faketime.git",
-      "type": "git"
-    }
-  ],
-  "stages": [
-    {
-      "name": "stage1",
-      "fetch_materials": true,
-      "never_cleanup_artifacts": false,
-      "clean_working_directory": false,
-      "environment_variables": [],
-      "jobs": [
-        {
-          "name": "job1",
-          "environment_variables": [],
-          "tabs": [],
-          "resources": [],
-          "artifacts": [],
-          "properties": [],
-          "run_instance_count": null,
-          "timeout": 0,
-          "tasks": [
-            {
-              "type": "exec",
-              "command": "ls"
-            }
-          ]
-        }
-      ]
-    }
-  ]
-}
+pipelines:
+  yamlpipe1:
+    group: simple
+    materials:
+      mygit:  # this is the name of material
+        git: https://github.com/arvindsv/faketime.git
+    stages:
+      - build: # name of stage
+          jobs:
+            build: # name of the job
+              tasks:
+               - exec: # indicates type of task
+                   command: ls
